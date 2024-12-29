@@ -1,33 +1,33 @@
+import os
 import streamlit as st
 import openai
 
-# Load the OpenAI API key from Streamlit secrets
-openai.api_key = st.secrets["openai"]["api_key"]
+# Set your OpenAI API key
+# Ensure OPENAI_API_KEY is set as an environment variable or replace with your actual key
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# Set up the Streamlit app
+# Streamlit app configuration
+st.set_page_config(page_title="GPT-3.5 Turbo Chatbot", layout="centered", page_icon="🤖")
 st.title("GPT-3.5 Turbo Chatbot")
-st.write("Enter a prompt and receive a response from GPT-3.5 Turbo.")
 
-# Input text box for user prompt
-user_input = st.text_input("Your prompt:")
+# Input from user
+user_input = st.text_input("Your prompt:", "")
 
-# Function to get response from OpenAI
-def get_gpt_response(prompt):
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}]
-        )
-        return response.choices[0].message.content.strip()
-    except Exception as e:
-        return f"An error occurred: {e}"
-
-# Display the response when the user submits a prompt
 if st.button("Submit"):
     if user_input:
-        with st.spinner("Generating response..."):
-            response = get_gpt_response(user_input)
-        st.write("**Response:**")
-        st.write(response)
+        try:
+            # Call OpenAI API with updated syntax
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "user", "content": user_input}
+                ]
+            )
+            # Display the response from GPT
+            st.write("**Response:**")
+            st.success(response["choices"][0]["message"]["content"])
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
     else:
         st.warning("Please enter a prompt.")
+

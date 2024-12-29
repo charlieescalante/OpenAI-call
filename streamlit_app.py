@@ -3,8 +3,7 @@ import streamlit as st
 import openai
 
 # Set your OpenAI API key
-# Ensure OPENAI_API_KEY is set as an environment variable or replace with your actual key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")  # Ensure this is set in the environment variables on Streamlit Cloud
 
 # Streamlit app configuration
 st.set_page_config(page_title="GPT-3.5 Turbo Chatbot", layout="centered", page_icon="🤖")
@@ -30,4 +29,3 @@ if st.button("Submit"):
             st.error(f"An error occurred: {e}")
     else:
         st.warning("Please enter a prompt.")
-

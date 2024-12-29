@@ -1,2 +1,5 @@
 streamlit
-openai>=1.0.0
+streamlit-chat
+python-dotenv
+langchain
+openai

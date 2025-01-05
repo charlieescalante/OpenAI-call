@@ -18,7 +18,13 @@ for message in st.session_state.messages:
 # Chat Input Kind of placeholder where user will unput his/her prompt
 # chat message : display all input message by user and respinse from assistant
 
-prompt = st.chat_input('Message')
+
+if prompt := st.chat_input('Message'):
+    msg = {
+        'role' : 'user'
+        'content' : prompt
+    }
+    st.session_state.messages.append(msg)
 
 with st.chat_message('user'):
     st.markdown(prompt)

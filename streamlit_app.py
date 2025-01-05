@@ -48,7 +48,7 @@ st.session_state.messages.append(
      "content": response_content}
 )
 
-
+#how this all works is explained here: https://www.youtube.com/watch?v=k1RzpXQ6MXc
 
 
 

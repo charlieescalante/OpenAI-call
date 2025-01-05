@@ -34,7 +34,7 @@ with st.chat_message('user'):
 with st.chat_message('assistant'):
     
     # Create Chat Completion API
-    chatresponse = client.chat.competions.create(
+    chatresponse = client.chat.completions.create(
         model='chatgpt-4o-latest',
         messages= st.session_state.messages,
         tempurature=1,

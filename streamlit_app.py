@@ -31,17 +31,18 @@ if prompt := st.chat_input('Message'):
 with st.chat_message('user'):
     st.markdown(prompt)
 
-
 with st.chat_message('assistant'):
+    
     # Create Chat Completion API
     chatresponse = client.chat.competions.create(
         model='chatgpt-4o-latest',
         messages= st.session_state.messages,
+        tempurature=1,
         n=1
     )
     response_content = chatresponse.choices[0].message.content
-# Display in streamlit
-st.markdown(response_content)
+    # Display in streamlit
+    st.markdown(response_content)
 
 
 

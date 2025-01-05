@@ -37,7 +37,7 @@ with st.chat_message('assistant'):
     chatresponse = client.chat.completions.create(
         model='chatgpt-4o-latest',
         messages= st.session_state.messages,
-        tempurature=1,
+        temperature=1,
         n=1
     )
     response_content = chatresponse.choices[0].message.content

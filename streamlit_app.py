@@ -44,7 +44,10 @@ with st.chat_message('assistant'):
     # Display in streamlit
     st.markdown(response_content)
 
-
+st.session_state.messages.append(
+    {"role":"assistant",
+     "content":response_content}
+)
 
 
 

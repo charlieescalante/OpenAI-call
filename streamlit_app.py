@@ -38,7 +38,7 @@ with st.chat_message('assistant'):
         model='chatgpt-4o-latest',
         messages= st.session_state.messages,
         temperature=1,
-        n=1
+        n=1,
         stream=True
     )
     response_content = st.write_stream(chatresponse)

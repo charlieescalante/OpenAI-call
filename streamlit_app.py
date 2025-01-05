@@ -21,7 +21,7 @@ for message in st.session_state.messages:
 
 if prompt := st.chat_input('Message'):
     msg = {
-        'role' : 'user'
+        'role' : 'user' ,
         'content' : prompt
     }
     st.session_state.messages.append(msg)

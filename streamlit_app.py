@@ -39,14 +39,13 @@ with st.chat_message('assistant'):
         messages= st.session_state.messages,
         temperature=1,
         n=1
+        stream=True
     )
-    response_content = chatresponse.choices[0].message.content
-    # Display in streamlit
-    st.markdown(response_content)
+    response_content = st.write_stream(chatresponse)
 
 st.session_state.messages.append(
     {"role":"assistant",
-     "content":response_content}
+     "content": response_content}
 )
 
 
